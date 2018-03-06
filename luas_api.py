@@ -10,10 +10,11 @@ app = flask.Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    return '''<h1>Luas Information</h1>
-<p>add '/stops' to url for information on all stops.</p>
-<p>add '/stop?id=stop_id' for information on a particular stop.</p>
-<p>ids range from 1 to 71</p>'''
+    return '''<h1>Dublin LUAS API in JSON</h1>
+<h2>Endpoints</h2>
+<p>Add '/stops' to url for information on all stops.</p>
+<p>Add '/stop?id=stop_id' for information on a particular stop.</p>
+<p>ids range from 1 to 71.....check '/stops' for id for a stop.</p>'''
 
 
 @app.route('/stops', methods=['GET'])
