@@ -1,4 +1,4 @@
-# Dublin LUAS API
+# Dublin LUAS Real Time API
 
 ## Endpoints
 

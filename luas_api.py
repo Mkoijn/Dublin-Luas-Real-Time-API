@@ -10,11 +10,11 @@ app = flask.Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    return '''<h1>Dublin LUAS API in JSON</h1>
+    return '''<h1>Dublin LUAS Real Time API</h1>
 <h2>Endpoints</h2>
 <p>Add '/stops' to url for information on all stops.</p>
-<p>Add '/stop?id=stop_id' for information on a particular stop.</p>
-<p>ids range from 1 to 71.....check '/stops' for id for a stop.</p>'''
+<p>Add '/stop?id=stop_id' for Real Time Info. on a particular stop.</p>
+<p>ids range from 1 to 71.....check '/stops' for ids(stop_number).</p>'''
 
 
 @app.route('/stops', methods=['GET'])
@@ -36,7 +36,6 @@ def api_id():
     results = []
 
     # Loop through the data and match results that fit the requested ID.
-    # IDs are unique, but other fields might return many results
     for stop in luas_list():
         if stop['stop_number'] == _id:
             lc = luas.api.LuasClient()
