@@ -46,16 +46,22 @@ def api_id():
             try:
                 inbound_due = int(lc.next_tram(stop['abbr'], LuasDirection.Inbound).due)
             except ValueError:
-                inbound_due = 'DUE'
-            inbound['inbound_destination'] = inbound_dest
+                if inbound_dest == 'No trams forecast':
+                    inbound_due = ''
+                else:
+                    inbound_due = 'DUE'
+            inbound['destination_inbound'] = inbound_dest
             inbound['due'] = inbound_due
 
             outbound_dest = str(lc.next_tram(stop['abbr'], LuasDirection.Outbound).destination)
             try:
                 outbound_due = int(lc.next_tram(stop['abbr'], LuasDirection.Outbound).due)
             except ValueError:
-                outbound_due = 'DUE'
-            outbound['outbound_destination'] = outbound_dest
+                if outbound_dest == 'No trams forecast':
+                    outbound_due = ''
+                else:
+                    outbound_due = 'DUE'
+            outbound['destination_outbound'] = outbound_dest
             outbound['due'] = outbound_due
 
             results.append(inbound)
