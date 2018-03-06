@@ -4,6 +4,6 @@
 
 https://dublin-luas-api.herokuapp.com/
 
-https://dublin-luas-api.herokuapp.com/stop?id=1  (ids range from 1-71)
+https://dublin-luas-api.herokuapp.com/stop?id=14 (ids range from 1-71)
 
-see https://dublin-luas-api.herokuapp.com/stops for ids
+see https://dublin-luas-api.herokuapp.com/stops for ids (stop_number)
