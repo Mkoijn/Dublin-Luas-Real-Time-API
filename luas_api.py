@@ -67,4 +67,5 @@ def api_id():
     return jsonify(results)
 
 
-app.run()
+if __name__ == '__main__':
+    app.run(port=5000, debug=True)
