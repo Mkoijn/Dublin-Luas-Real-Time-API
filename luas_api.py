@@ -39,8 +39,8 @@ def api_id():
     for stop in luas_list():
         if stop['stop_number'] == _id:
             lc = luas.api.LuasClient()
-            inbound = dict(stop)
-            outbound = dict(stop)
+            stop['inbound'] = {}
+            stop['outbound'] = {}
 
             inbound_dest = str(lc.next_tram(stop['abbr'], LuasDirection.Inbound).destination)
             try:
@@ -50,8 +50,8 @@ def api_id():
                     inbound_due = ''
                 else:
                     inbound_due = 'DUE'
-            inbound['destination_inbound'] = inbound_dest
-            inbound['due'] = inbound_due
+            stop['inbound']['destination'] = inbound_dest
+            stop['inbound']['due'] = inbound_due
 
             outbound_dest = str(lc.next_tram(stop['abbr'], LuasDirection.Outbound).destination)
             try:
@@ -61,11 +61,11 @@ def api_id():
                     outbound_due = ''
                 else:
                     outbound_due = 'DUE'
-            outbound['destination_outbound'] = outbound_dest
-            outbound['due'] = outbound_due
+            stop['outbound']['destination'] = outbound_dest
+            stop['outbound']['due'] = outbound_due
 
-            results.append(inbound)
-            results.append(outbound)
+            results.append(stop)
+
             print(results)
 
     # Use the jsonify function from Flask to convert our list of
